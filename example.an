@@ -1,4 +1,2 @@
 #!/bin/an
-int main(){
-  puts("chungus");
-}
+puts [strcat "cun gus" "mungus" 'f' 'fun gus']
