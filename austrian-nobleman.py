@@ -5,7 +5,7 @@ import sys
 def eprint(*args, **kwargs):
   print(*args, file=sys.stderr, **kwargs)
 
-debug = False
+debug = False #True
 
 def dprint(*args, **kwargs):
   if debug: eprint(*args, **kwargs)
@@ -64,12 +64,12 @@ def lex():
   while(index<len(source_string)):
     c = source_string[index]
     index+=1
-    
+
     if c.isspace() or c == '"' or c == '\'' or c == '[' or c == ']':
       if current_token:
         ast.append(current_token)
         current_token = ""
-    
+
     if c == ']':
       return ast
     elif c == '[':
@@ -83,16 +83,35 @@ def lex():
 
     if c=="\n": line+=1
   return ast
-    
+
 
 def ast_to_c(ast):
-  return ast #TODO: actually interpret this
-	
+  outstring = ""
+  if isinstance(ast, str) or not isinstance(ast, list):
+    dprint(ast, "is an end node")
+    return ast
+  else:
+    dprint(ast, "is an ast node")
+    a = list(map(ast_to_c, ast))
+    if a[0] in ["+", "-", "*", "/", "%"]: #these operators are the same
+      outstring += "("+a[0].join(a[1:])+")"
+    elif a[0] in ["//"]: #these operators are the same
+      pass
+    elif a in ["if", "while"]: #these operators are the same
+      outstring += a[0]+"("+a[1]+"){\n  "+ ";\n  ".join(a[2:])+"}\n"
+    elif a in ["do-while"]: #these operators are the same
+      outstring += "do{\n  "+ ";\n  ".join(a[2:])+"}while("+a[1]+")\n"
+    else:
+      outstring +=  a[0]+"("+ ", ".join(a[1:])+")"
+
+  return outstring
+
 def main():
   with open(sys.argv[1],"r") as file:
     global source_string
     s=file.readlines()
     source_string = "".join([i for i in s if i[:2] != "#!"]) #we must honor the holy shebang... by stripping it.
+
     print(ast_to_c(lex()))
 
 main()
