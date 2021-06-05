@@ -1,0 +1,10 @@
+#!/bin/sh
+# The shebang above indicates this file is a unix shell script, though it may work in other contexts.
+# This file is a wrapper for auastrian-nobleman.py (which is just the transpiler) which will also invoke the c compiler and execute the resulting executable.
+# Use a shebang like #!/bin/an (or wherever you keep this file) in a source file to make most shells recognize that when invoked on the command line, that file should be send to this file for interpretation.
+# You can also use #!/usr/bin/env an if this file is somewhere on your system path.
+for i in "$@"; do
+  ./austrian-nobleman.py "$i"
+  ./austrian-nobleman.py "$i" | cc -x c -o $(basename "$i" .an) - #produces no intermediate C file #assumes .an file extention
+  ./$(basename "$i" .an)
+done
