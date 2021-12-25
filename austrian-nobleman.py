@@ -85,7 +85,7 @@ def lex():
   return ast
 
 
-def ast_to_c(ast):
+def ast_to_c(ast): #TODO: debug this
   outstring = ""
   if isinstance(ast, str) or not isinstance(ast, list):
     dprint(ast, "is an end node")
@@ -101,6 +101,8 @@ def ast_to_c(ast):
       outstring += a[0]+"("+a[1]+"){\n  "+ ";\n  ".join(a[2:])+"}\n"
     elif a in ["do-while"]: #these operators are the same
       outstring += "do{\n  "+ ";\n  ".join(a[2:])+"}while("+a[1]+")\n"
+    elif a in ["include"]: #these operators are the same
+      outstring += "".join([ '\n#include "'+i+'"\n' for i in a[1:] ])
     else:
       outstring +=  a[0]+"("+ ", ".join(a[1:])+")"
 
