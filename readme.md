@@ -45,4 +45,6 @@ For motivations that are best left undescribed lest the length of this document 
 
 I was already familiar with L++ https://bitbucket.org/ktg/l/src/master/ and figured an appropriate name for an analogous language targeting pure C would be L. Thus, the name of this project was L for about five minutes, before I realized there was already a programming language called L http://l-lang.org/
 
+I looked into using, ie, the GCC intermediate AST or something as a touchstone; taking that AST out of the compiler as a sexpr or parsing a sexpr and then feeding the result into the compiler at the step where it would want the parsed AST data. However, even trying to figure out that theoretically-more-direct way was hilariously more complicated than just generating regular C code as my output.
+
 And the rest, as they say, is history.
