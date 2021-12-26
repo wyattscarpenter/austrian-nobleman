@@ -37,6 +37,8 @@ C-Mera, once known as cgen, https://github.com/kiselgra/c-mera "The C-Mera syste
 
 cmacro https://github.com/eudoxia0/cmacro "Lisp macros for C [...] A macro is a function that operates on your code's abstract syntax tree rather than values. Macros in cmacro have nothing to do with the C preprocessor except they happen at compile time, and have no knowledge of run-time values. In cmacro, a macro maps patterns in the code to templates. A macro may have multiple cases, each matching multiple patterns, but each producing code through the same template. cmacro has a very lenient notion of C syntax, which means you can write macros to implement DSLs with any syntax you like. You could implement Lisp-like prefix notation, or a DSL for routing URLs, or the decorator pattern, for example."
 
+Clasp https://github.com/clasp-developers/clasp "Clasp is a new Common Lisp implementation that seamlessly interoperates with C++ libraries and programs using LLVM for compilation to native code. This allows Clasp to take advantage of a vast array of preexisting libraries and programs, such as out of the scientific computing ecosystem. Embedding them in a Common Lisp environment allows you to make use of rapid prototyping, incremental development, and other capabilities that make it a powerful language."
+
 ## A Long And Rambling History Of A Project That Never Really Went Anywhere
 
 _“It is a truth universally acknowledged, that a single man in possession of a computer science degree, must be in want of a lisp.”_
@@ -45,6 +47,6 @@ For motivations that are best left undescribed lest the length of this document 
 
 I was already familiar with L++ https://bitbucket.org/ktg/l/src/master/ and figured an appropriate name for an analogous language targeting pure C would be L. Thus, the name of this project was L for about five minutes, before I realized there was already a programming language called L http://l-lang.org/
 
-I looked into using, ie, the GCC intermediate AST or something as a touchstone; taking that AST out of the compiler as a sexpr or parsing a sexpr and then feeding the result into the compiler at the step where it would want the parsed AST data. However, even trying to figure out that theoretically-more-direct way was hilariously more complicated than just generating regular C code as my output.
+I looked into using, ie, the GCC intermediate AST or something as a touchstone; taking that AST out of the compiler as a sexpr or parsing a sexpr and then feeding the result into the compiler at the step where it would want the parsed AST data. However, even trying to figure out that theoretically-more-direct way was hilariously more complicated than just generating regular C code as my output. For a small taste of this, see http://icps.u-strasbg.fr/~pop/gcc-ast.html https://gcc.gnu.org/onlinedocs/gccint/RTL.html or https://clang.llvm.org/docs/IntroductionToTheClangAST.html or https://llvm.org/docs/LangRef.html
 
 And the rest, as they say, is history.
