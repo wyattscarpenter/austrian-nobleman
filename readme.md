@@ -18,11 +18,11 @@ For further examples, please see the test folder.
 
 ## Dependencies
 
-Python: The implementation of this project is in Python (Python 3 is probably required, I didn't check because who uses Python 2 any more), because ~~why not lol~~ I didn't feel like writing a lot of string manipulation code in C. There are no plans to self-host Austrian Nobleman; even though it would be relatively trivial, the only foreseeable "benefit" would be having to maintain a two simultaneous implementations: the realistic one and the self-hosted one.
+Python: The implementation of this project is in Python (Python 3 is probably required, I didn't check because who uses Python 2 any more), because ~~why not lol~~ I didn't feel like writing a lot of string manipulation code in C. There are no plans to self-host Austrian Nobleman; even though it would be relatively trivial, the only foreseeable "benefit" would be having to maintain two simultaneous implementations: the realistic one and the self-hosted one.
 
 A C compiler: I feel a bit bad that I'm just piling more crap on top of the pile of crap that already is contemporary computing, but YOLO.
 
-Unix shell (optional): Austrian Nobleman (.an) files can be invoked the shell as scripts using a shebang (eg `#!/bin/an`) that points to the `an` shell script included in this directory that runs the source script through `austrian-nobleman.py`, pipes that to the c compiler `cc`, and executes the resulting program. Note that this will produce a compiled version of your file in the local directory, named the same as the source file less the file extenion, so make sure you can write to the local directory and that this won't cause name collisions. This shebang business is optional; you can always manually run your source code through `austrian-nobleman.py`, `cc`, and `exec` (or your local equivalents) yourself.
+Unix shell (optional): Austrian Nobleman (.an) files can be invoked in the shell as scripts using a shebang (eg `#!/bin/an`) that points to the `an` shell script included in this directory that runs the source script through `austrian-nobleman.py`, pipes that to the c compiler `cc`, and executes the resulting program. Note that this will produce a compiled version of your file in the local directory, named the same as the source file less the file extension, so make sure you can write to the local directory and that this won't cause name collisions. This shebang business is optional; you can always manually run your source code through `austrian-nobleman.py`, `cc`, and `exec` (or your local equivalents) yourself.
 
 
 ## Related Work
